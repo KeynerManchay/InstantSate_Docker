@@ -1,0 +1,98 @@
+{%extends "home.html" %}
+{% load static %}
+
+{% block title %} Instant Sale: Perfil de {{persona.Usuario}} {% endblock %}
+
+{% block content %}
+
+<div class="mx-auto row py-5 px-4">
+
+    <div class="bg-white shadow rounded overflow-hidden">
+        <div class="px-4 pt-0 pb-4 bg-dark">
+            <div class="media align-items-end" style="transform: translateY(3rem);">
+                <div class="profile mr-3">
+                    {% if persona.ImgPerfil %}
+                    <img src="/media/{{persona.ImgPerfil}}" class="rounded mb-2 img-thumbnail" width="130" height="130">
+                    {% else %}
+                    <td><img src="/media/PerfilUsuarios/PerfilDefaulth.jpg" class="rounded mb-2 img-thumbnail"
+                            width="130" height="130"></td>
+                    {% endif %}
+                    <br>
+                </div>
+                <div class="media-body mb-5 text-white">
+                    <h4 class="mt-0 mb-0">
+                        {{persona.Nombre}}&nbsp;{{persona.ApellidoPaterno}}&nbsp;{{persona.ApellidoMaterno}}</h4>
+                    <br>
+                    {% if Direccion %}
+                    <p class="small mb-4"> <i class="fa fa-map-marker mr-2" style=" font-weight: bold;">Email:</i>
+                        {{persona.Email}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <i class="fa fa-map-marker mr-2" style=" font-weight: bold;">Pais:</i> {{Direccion.Pais}}
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <i class="fa fa-map-marker mr-2" style=" font-weight: bold;">Ciudad:</i> {{Direccion.Ciudad}}
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <i class="fa fa-map-marker mr-2" style=" font-weight: bold;">Provincia:</i>
+                        {{Direccion.Provincia}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <br>
+                        <i class="fa fa-map-marker mr-2" style=" font-weight: bold;">Fecha de Nacimiento:</i>
+                        {{persona.FechaNacimiento}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <i class="fa fa-map-marker mr-2" style=" font-weight: bold;">Calle Principal:</i>
+                        {{Direccion.CallePrincipal}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <i class="fa fa-map-marker mr-2" style=" font-weight: bold;">Calle Secundaria:</i>
+                        {{Direccion.CalleSecundaria}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </p>
+                    {% else %}
+                    <p class="small mb-4"> <i class="fa fa-map-marker mr-2" style=" font-weight: bold;">Email:</i>
+                        {{persona.Email}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <i class="fa fa-map-marker mr-2" style=" font-weight: bold;">Fecha de Nacimiento:</i>
+                        {{persona.FechaNacimiento}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </p>
+                    {% endif %}
+
+                    {% if Telefono %}
+                    <p class="small mb-4"> <i class="fa fa-map-marker mr-2" style=" font-weight: bold;">Primer Telefono:</i>
+                        {{Telefono.Telefono1}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <i class="fa fa-map-marker mr-2" style=" font-weight: bold;">Segundo Telefono::</i>
+                        {{Telefono.Telefono2}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <i class="fa fa-map-marker mr-2" style=" font-weight: bold;">Celular:</i>
+                        {{Telefono.Celular}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-light p-4 d-flex justify-content-end text-center">
+            <ul class="list-inline mb-0">
+                <li class="list-inline-item">
+                    <h5 class="font-weight-bold mb-0 d-block">
+                        {{Tamano}}
+                    </h5><small class="text-muted"> <i class="fa fa-picture-o mr-1"></i>Publicaciones</small>
+                </li>
+            </ul>
+        </div>
+
+        <section>
+            <div class="container">
+                <div class="row">
+                    {% for c in publicacion %}
+                    <!-- {{ forloop.counter }} -->
+                    <div class="col-lg-4 mb-4">
+                        <div class="card">
+                            <img src="/media/{{c.Articulo.ImgArticulo}}" alt="" class="card-img-top" width="150"
+                                height="300">
+                            <div class="card-body">
+                                <h5 class="card-title">{{c.Titulo}}</h5>
+                                <p class="card-text">{{c.Descripcion}}</p>
+                                <a href="Subastar/{{c.Articulo_id}}" class="btn btn-outline-success btn-sm">Subastar</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,76 @@
+{%extends "home.html" %}
+
+{% block title %} Instant Sale: Usuarios {% endblock %}
+
+{% block content %}
+
+<h1 class="Yo">Usuarios Registrados</h1>
+<br>
+<h3>Buscar Usuario:</h3>
+<form action="" method="get">
+    <div class="input-group rounded">
+        <input type="search" class="form-control rounded" name="Buscar" placeholder="Buscar Usuario..." aria-label="Search"
+            aria-describedby="search-addon" value="{{ request.GET.buscar }}"/>
+        <button class="btn btn-primary" type="submit">
+            🔍︎
+        </button>
+    </div>
+</form>
+<!-- <h2 style="text-align: center;">Nuestros Estudiantes</h2> -->
+<!-- <form method="GET" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+    <div class="input-group">
+        <input type="search" id="busqueda" name="busqueda" class="form-control bg-light border-0 small" placeholder="Buscar" value="{{request.GET.busqueda}}"/>
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-search fa-sm"></i>
+            </button>
+        </div>
+    </div> -->
+    </form>
+<div class="card">
+    <div class="card-body">
+        <table class="table table-dark table-hover">
+            <thead>
+                <tr>
+                    <th>Nro.</th>
+                    <th>Foto de Perfil</th>
+                    <th>Usuario</th>
+                    <!-- <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th> -->
+                    <th>Email</th>
+                    <th>Fecha de Nacimiento</th>
+                    <!-- <th>Usuario</th> -->
+                    <!-- <th>Clave</th>  -->
+                    
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in usuarios %}
+                <tr>
+                    <!-- <td>{{c.id}}</td> -->
+                    <td>{{ forloop.counter }}</td> 
+                    {% if c.ImgPerfil %}
+                    <td><img src="/media/{{c.ImgPerfil}}" class="rounded mx-auto" width="100" height="100"></td>
+                    {% else %}
+                    <td><img src="/media/PerfilUsuarios/PerfilDefaulth.jpg" class="rounded mx-auto" width="100" height="100"></td>
+                    {% endif %}
+                    <td>{{c.Usuario}}</td>
+                    <!--<td>{{c.ApellidoPaterno}}</td>
+                    <td>{{c.ApellidoMaterno}}</td> -->
+                    <td>{{c.Email}}</td>
+                    <td>{{c.FechaNacimiento}}</td>
+                    <!-- <td>{{c.Usuario}}</td>
+                    <td>{{c.Clave}}</td> -->
+                    <!-- <td><img src='{{c.ImgPerfil}}'  width="10" height="10"></td> -->
+                    
+                    <!-- <td><a href="/EliminarUsuario/{{c.id}}" class="btn btn-danger">Eliminar</a></td> -->
+                    <td><a href="/Perfil/{{c.id}}" class="btn btn-danger">Ver Perfil</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

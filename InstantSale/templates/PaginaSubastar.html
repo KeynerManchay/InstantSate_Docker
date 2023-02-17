@@ -1,0 +1,220 @@
+{%extends "home.html" %}
+{% load static %}
+
+{% block title %} Instant Sale: Subastar {% endblock %}
+
+{% block content %}
+
+<section class="vh-100">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 px-0 d-none d-sm-block">
+        <br><br>
+        <img src="/media/{{Article.Articulo.ImgArticulo}}" alt="Login image" class="w-100 vh-50"
+          style="object-fit: cover; object-position: left;">
+
+          <br><br><br><br>
+          
+      </div>
+      
+      
+      <div class="col-sm-6 text-black">
+        {%csrf_token %}
+        <!-- <div class="px-5 ms-xl-1">
+            <i class="fas fa-crow fa-2x me-3 pt-5 mt-xl-4" style="color: #709085;"></i>
+            <span class="h1 fw-bold mb-0">
+                <img src='{% static "img/LogoOriginal.png" %}' width="150px" height="75px">
+            </span>
+          </div> -->
+        <div class=" align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+
+          <h3 class="fa-crow mb-1 pb-3" style="letter-spacing: 1px;">Subasta en {{Article.Articulo.Nombre}}</h3> <br>
+          <footer class="blockquote-footer"><cite title="Source Title">Propietario: {{Persona.Usuario.Usuario}}&nbsp;</cite></footer>
+          <p class="fw-normal">{{Article.Descripcion}}</p>
+          <p class="fw-bold">Fecha de Subida:&nbsp;&nbsp;&nbsp;</p>
+          <div class="badge bg-primary text-wrap" style="width: 6rem;">
+            {{Article.FechaHoraSubida}}
+          </div>
+          <br><br>
+          <p class="fw-bold">Fecha de Retirada:&nbsp;&nbsp;&nbsp;</p>
+
+          <div class="badge bg-danger text-wrap" style="width: 6rem;">
+            {{Article.FechaHoraRetirada}}
+          </div>
+          <br><br>
+          <p class="fw-semibold">Stock: {{Article.Stock}}</p>
+          <!-- <p class="fw-semibold">Estado del producto: {{Article.Articulo.EstadoProducto}}</p> -->
+          {% if Article.Articulo.EstadoProducto == 1 %}
+            <p class="fw-semibold">Estado del producto: Nuevo</p>
+          {% else %}
+          <p class="fw-semibold">Estado del producto: Usado</p>
+          {% endif %}
+          {% if Article.Articulo.Categoria == 1 %}
+          <p class="fw-semibold">Categoria: Clasico</p>
+          {% endif %}
+          {% if Article.Articulo.Categoria == 2 %}
+          <p class="fw-semibold">Categoria: Retro</p>
+          {% endif %}
+          {% if Article.Articulo.Categoria == 3 %}
+          <p class="fw-semibold">Categoria: Ropa</p>
+          {% endif %}
+          {% if Article.Articulo.Categoria == 4 %}
+          <p class="fw-semibold">Categoria: Deportivo</p>
+          {% endif %}
+          {% if Article.Articulo.Categoria == 5 %}
+          <p class="fw-semibold">Categoria: Eletronicos</p>
+          {% endif %}
+          {% if Article.Articulo.Categoria == 6 %}
+          <p class="fw-semibold">Categoria: Tecnologia</p>
+          {% endif %}
+          {% if Article.Articulo.Categoria == 7 %}
+          <p class="fw-semibold">Categoria: Arte</p>
+          {% endif %}
+          {% if Article.Articulo.Categoria == 8 %}
+          <p class="fw-semibold">Categoria: Salud</p>
+          {% endif %}
+          {% if Article.Articulo.Categoria == 9 %}
+          <p class="fw-semibold">Categoria: Entretenimiento</p>
+          {% endif %}
+          {% if Article.Articulo.Categoria == 10 %}
+          <p class="fw-semibold">Categoria: Software</p>
+          {% endif %}
+          {% if Article.Articulo.Categoria == 11 %}
+          <p class="fw-semibold">Categoria: Automotriz</p>
+          {% endif %}
+          {% if Article.Articulo.Categoria == 12 %}
+          <p class="fw-semibold">Categoria: Otro</p>
+          {% endif %}
+
+          {% if Article.Articulo.PaisOrigen == 1 %}
+          <p class="fw-semibold">Pais de Origen: Ecuador</p>
+          {% endif %}
+          {% if Article.Articulo.PaisOrigen == 2 %}
+          <p class="fw-semibold">Pais de Origen: EEUU</p>
+          {% endif %}
+          {% if Article.Articulo.PaisOrigen == 3 %}
+          <p class="fw-semibold">Pais de Origen: Peru</p>
+          {% endif %}
+          {% if Article.Articulo.PaisOrigen == 4 %}
+          <p class="fw-semibold">Pais de Origen: Colombia</p>
+          {% endif %}
+          {% if Article.Articulo.PaisOrigen == 5 %}
+          <p class="fw-semibold">Pais de Origen: Venezuela</p>
+          {% endif %}
+          {% if Article.Articulo.PaisOrigen == 6 %}
+          <p class="fw-semibold">Pais de Origen: Brasil</p>
+          {% endif %}
+          {% if Article.Articulo.PaisOrigen == 7 %}
+          <p class="fw-semibold">Pais de Origen: Uruguay</p>
+          {% endif %}
+          {% if Article.Articulo.PaisOrigen == 8 %}
+          <p class="fw-semibold">Pais de Origen: Chile</p>
+          {% endif %}
+          {% if Article.Articulo.PaisOrigen == 9 %}
+          <p class="fw-semibold">Pais de Origen: Bolivia</p>
+          {% endif %}
+          {% if Article.Articulo.PaisOrigen == 10 %}
+          <p class="fw-semibold">Pais de Origen: Paraguay</p>
+          {% endif %}
+          {% if Article.Articulo.PaisOrigen == 11 %}
+          <p class="fw-semibold">Pais de Origen: Otro</p>
+          {% endif %}
+      
+          <!-- <p class="fw-semibold">Pais de Origen: {{Article.Articulo.PaisOrigen}}</p> -->
+          <!-- <p class="fw-semibold">Color: {{Article.Articulo.Color}}</p> -->
+
+          {% if Article.Articulo.Color == 1 %}
+          <p class="fw-semibold">Color: Amarillo</p>
+          {% endif %}
+          {% if Article.Articulo.Color == 2 %}
+          <p class="fw-semibold">Color: Azul</p>
+          {% endif %}
+          {% if Article.Articulo.Color == 3 %}
+          <p class="fw-semibold">Color: Rojo</p>
+          {% endif %}
+          {% if Article.Articulo.Color == 4 %}
+          <p class="fw-semibold">Color: Naranja</p>
+          {% endif %}
+          {% if Article.Articulo.Color == 5 %}
+          <p class="fw-semibold">Color: Verde</p>
+          {% endif %}
+          {% if Article.Articulo.Color == 6 %}
+          <p class="fw-semibold">Color: Morado</p>
+          {% endif %}
+          {% if Article.Articulo.Color == 7 %}
+          <p class="fw-semibold">Color: Rosado</p>
+          {% endif %}
+          {% if Article.Articulo.Color == 8 %}
+          <p class="fw-semibold">Color: Negro</p>
+          {% endif %}
+          {% if Article.Articulo.Color == 9 %}
+          <p class="fw-semibold">Color: Gris</p>
+          {% endif %}
+          {% if Article.Articulo.Color == 10 %}
+          <p class="fw-semibold">Color: Cafe</p>
+          {% endif %}
+          {% if Article.Articulo.Color == 11 %}
+          <p class="fw-semibold">Color: Blanco</p>
+          {% endif %}
+          {% if Article.Articulo.Color == 12 %}
+          <p class="fw-semibold">Color: Otro</p>
+          {% endif %}
+
+          <form action="RealizarSubasta/{{Article.Articulo_id}}" method="post">
+            
+            Cantidad a subastar: <input type="number" id="txtCantidad" name="txtCantidad" class="form-control" required>
+            <input type="hidden" name="txtUsuario" id="txtUsuario" value="{{request.session.usuario}}">
+            <div class="pt-1 mb-0">
+              <button class="btn btn-outline-success btn-lg btn-block" type="submit">Subastar</button>
+            </div>
+            {%csrf_token %}
+          </form>
+        </div>
+      </div>
+      <!-- <button class="btn btn-danger"><i class="bi bi-heart-fill"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+      </svg> Favoritos</i></button>
+      <br><br> -->
+      
+      <form action="" method="post">
+        <br><h4>Comentarios:</h4>
+        {%csrf_token %}
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="txtComentario" name="txtComentario" style="height: 50px;" placeholder="Escribe un Comentario..." aria-label="Recipient's username" aria-describedby="button-addon2">
+          <button class="btn btn-outline-secondary" type="submit">Comentar</button>
+        </div>
+      </form>
+      
+    </div>    
+          <!-- <div class="card mb-3 mx-auto" style="max-width: 700px; height: 170px;">
+            <div class="row g-0" >
+              <div class="col-md-4">
+                <img src="..." class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8" >
+                <div class="card-body" >
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          {% for R in Comentario %}
+          <div class="card  mb-3 mx-auto" >
+            <div class="card-header">
+              Usuario Anonimo
+            </div>
+            <div class="card-body">
+              <blockquote class="blockquote mb-0">
+                <p>{{R.Comentario}}</p>
+                <footer class="blockquote-footer"><cite title="Source Title">{{R.FechaHora}}</cite></footer>
+              </blockquote>
+            </div>
+          </div>
+          {% endfor %}
+  </div>
+
+</section>
+
+{% endblock %}

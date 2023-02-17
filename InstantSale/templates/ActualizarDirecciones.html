@@ -1,0 +1,46 @@
+{%extends "home.html" %}
+{% load static %}
+
+{% block title %} Instant Sale: Actualizacion Dirección {% endblock %}
+
+{% block content %}
+
+<div class="col-sm-6 text-black">
+    {%csrf_token %}
+
+  <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+    <form style="width: 50rem;" action="ActualizacionDireccion/{{IdUsuario}}" method="post" enctype="multipart/form-data">
+        {%csrf_token %}
+      <h3 class="fa-crow mb-1 pb-3" style="letter-spacing: 1px;">Actualizar Direcciones</h3>
+
+      <div class="form-outline mb-0">
+        <input type="text" id="txtCallePrincipal" name="txtCallePrincipal" value="{{Direccion.CallePrincipal}}" class="form-control" required/>
+        <label class="form-label" for="form2Example18">Calle Principal</label>
+      </div>
+
+      <div class="form-outline mb-0">
+        <input type="text" id="txtCalleSecundaria" name="txtCalleSecundaria" value="{{Direccion.CalleSecundaria}}" class="form-control" required/>
+        <label class="form-label" for="form2Example18">Calle Secundaria</label>
+      </div>
+
+      <div class="form-outline mb-0">
+        <input type="text" id="txtProvincia" name="txtProvincia" value="{{Direccion.Provincia}}" class="form-control" required/>
+        <label class="form-label" for="form2Example18">Provincia</label>
+      </div>
+      <div class="form-outline mb-0">
+        <input type="text" id="txtCiudad" name="txtCiudad" value="{{Direccion.Ciudad}}" class="form-control" required/>
+        <label class="form-label" for="form2Example18">Ciudad</label>
+      </div>
+      <div class="form-outline mb-0">
+        <input type="text" id="txtPais" name="txtPais" value="{{Direccion.Pais}}" class="form-control" required/>
+        <label class="form-label" for="form2Example18">Pais</label>
+      </div>
+      {%csrf_token %}
+      <div class="pt-1 mb-0">
+        <button class="btn btn-outline-success btn-lg btn-block" type="submit">Actualizar </button>
+      </div>
+    </form>
+
+  </div>
+
+{% endblock %}

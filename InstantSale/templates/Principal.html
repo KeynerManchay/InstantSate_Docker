@@ -1,0 +1,68 @@
+{%extends "home.html" %}
+{% load static %}
+
+{% block title %} Instant Sale {% endblock %}
+
+{% block content %}
+
+<!-- <img class="rounded mx-auto d-block" src='{% static "img/img1.jpg" %}'> -->
+
+<nav class="bg-dark navbar-dark">
+    <!-- <div class="container">
+      <a href="" class="navbar-brand"><i class="fas fa-tree mr-2"></i>Forest</a>
+    </div> -->
+</nav>
+
+<section class="jumbotron text-center"
+    style="background: url(https://images.pexels.com/photos/696205/pexels-photo-696205.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1) center center / cover no-repeat ;">
+    <h1 class="display-3 LetraBlanca" style="color: white; font-weight: bold;">Monton de Poductos para Elegir</h1>
+    <p class="lead LetraBlanca" style="color: white; font-weight: bold;">Puedes subastar desde un Dolar :)</p>
+    <a href="RegistrarArticulo/{{request.session.usuario}}" class="btn btn-primary">Publicar un Articulo</a>
+<br>
+<br>
+<form action="" method="get">
+    <div class="input-group rounded">
+        <input type="search" class="form-control rounded" name="buscar" placeholder="Buscar..." aria-label="Search"
+            aria-describedby="search-addon" value="{{ request.GET.buscar }}"/>
+        <button class="btn btn-primary" type="submit">
+            🔍︎
+        </button>
+    </div>
+</form>
+<br>
+</section>
+<br>
+<section>
+    <div class="container">
+        <div class="row">
+
+            {% for c in publicaciones %}
+            <div class="col-lg-4 mb-4">
+                <div class="card">
+                    <img src="/media/{{c.Articulo.ImgArticulo}}" alt="" class="card-img-top ">
+                    <div class="card-body">
+                        <h5 class="card-title">{{c.Titulo}}</h5>
+                        <p class="card-text">{{c.Descripcion}}</p>
+                        <form action="Favorito/{{c.Articulo_id}}" method="get">
+                            <button class="btn btn-danger" type="submit"><i class="bi bi-heart-fill"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                              </svg> Favoritos</i></button>
+                              <a href="Subastar/{{c.Articulo_id}}" id="btn-abrir-popup"
+                            class="btn btn-outline-success">Subastar</a>
+                            <div class="badge border border-success p-2 mb-2 text-wrap position-absolute bottom-0 end-0" style="width: 6rem; color: black; margin-left: 10px;">
+
+                                Hasta: {{c.FechaHoraRetirada}}
+                              </div>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

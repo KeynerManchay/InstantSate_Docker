@@ -1,0 +1,58 @@
+{%extends "home.html" %}
+{% load static %}
+
+{% block title %} Instant Sale: Editar Perfil {% endblock %}
+
+{% block content %}
+
+<div class="col-sm-6 text-black">
+    {%csrf_token %}
+
+  <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+    <form style="width: 50rem;" action="EdicionPerfil/{{usuario.id}}" method="post" enctype="multipart/form-data">
+        {%csrf_token %}
+      <h3 class="fa-crow mb-1 pb-3" style="letter-spacing: 1px;">Editar Cuenta</h3>
+
+      <div class="form-outline mb-0">
+        <input type="text" id="txtNombre" name="txtNombre" value="{{usuario.Nombre}}" class="form-control" required/>
+        <label class="form-label" for="form2Example18">Nombre</label>
+      </div>
+
+      <div class="form-outline mb-0">
+        <input type="text" id="txtApellidoPaterno" name="txtApellidoPaterno" value="{{usuario.ApellidoPaterno}}" class="form-control" required/>
+        <label class="form-label" for="form2Example18">Apellido Paterno</label>
+      </div>
+
+      <div class="form-outline mb-0">
+        <input type="text" id="txtApellidoMaterno" name="txtApellidoMaterno" value="{{usuario.ApellidoMaterno}}" class="form-control" required/>
+        <label class="form-label" for="form2Example18">Apellido Materno</label>
+      </div>
+      <div class="form-outline mb-0">
+        <input type="email" id="txtEmail" name="txtEmail" value="{{usuario.Email}}" class="form-control" required/>
+        <label class="form-label" for="form2Example18">Email</label>
+      </div>
+      <div class="form-outline mb-0">
+        <input type="date" id="txtFechaNacimiento" name="txtFechaNacimiento" value="{{usuario.FechaNacimiento}}" class="form-control" required/>
+        <label class="form-label" for="form2Example18">Fecha de Nacimiento</label>
+      </div>
+      <div class="form-outline mb-0">
+        <input type="text" id="txtUsuario" name="txtUsuario" value="{{usuario.Usuario}}" class="form-control" required/>
+        <label class="form-label" for="form2Example18">Nombre de Usuario</label>
+      </div>
+      <div class="form-outline mb-0">
+        <input type="password" id="txtClave" name="txtClave" class="form-control" required/>
+        <label class="form-label" for="form2Example28">Contraseña</label>
+      </div>
+      <div class="form-outline mb-0">
+        <input type="file" id="txtImgPerfil" name="txtImgPerfil" value="{{usuario.ImgPerfil}}" class="form-control"/>
+        <label class="form-label" for="form2Example18">Image de Perfil</label>
+      </div>
+      {%csrf_token %}
+      <div class="pt-1 mb-0">
+        <button class="btn btn-outline-success btn-lg btn-block" type="submit">Actualizar </button>
+      </div>
+    </form>
+
+  </div>
+
+{% endblock %}

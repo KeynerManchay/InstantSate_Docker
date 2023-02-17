@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@600&family=Open+Sans:ital,wght@1,800&family=Roboto:wght@300&family=Source+Serif+Pro:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href='{% static "css/Styles.css" %}'>
+    <link rel="stylesheet" href='{% static "css/PantallaError.css" %}'>
+    
+</head>
+{% if request.session.usuario %}
+
+<body>
+    <div>
+        {% include "BarraNavegacion.html" %}
+        <!-- <img src='{% static "img/img1.jpg" %}'> -->
+        {% block content %}
+        {% endblock %}
+    </div>
+    <script type="text/javascript" src='{% static "js/Codigo.js" %}'></script>
+    {% else %}
+</body>
+
+    
+    <!-- <div class="mx-auto alert alert-danger" style="text-align: center;" role="alert">
+        <h1>Lo sentimos, pero necesitas tener una Cuenta Para acceder al Catalogo :(</h1>
+    </div> -->
+    <div id="notfound">
+		<div class="notfound">
+			<div class="notfound-404"></div>
+			<h1>Oops! Esta pagina no Funciona</h1>
+			<h2>Necesitas una Cuenta para poder ingresar a ella</h2>
+			<p>Para crear tu Cuenta, regresa al Login y entra al enlace de 'Registrate Aquí'</p>
+			<a href="/login"> Regresar al Login</a>
+		</div>
+	</div>
+{% endif %}
+
+</html>

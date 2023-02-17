@@ -1,0 +1,70 @@
+{%extends "home.html" %}
+{% load static %}
+
+{% block title %} Instant Sale: Registrar Articulo {% endblock %}
+
+{% block content %}
+<div class="col-sm-6 text-black">
+  {%csrf_token %}
+
+  <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+    <form style="width: 50rem;" method="post" action="RegistrarPublicacion/{{PersonaId}}" enctype="multipart/form-data">{%csrf_token %}
+      <div class="form-outline mb-0">
+        <h3 class="fa-crow mb-1 pb-3" style="letter-spacing: 1px;">Registrar Articulo</h3>
+        {{FomularioArticulo.as_p}}
+      </div>
+        <input type="file" id="ImgArti" name="ImgArti">
+      {%csrf_token %}
+      <div class="pt-1 mb-0">
+        <button class="btn btn-outline-success btn-lg btn-block" type="submit">Añadir Articulo</button>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- <div class="col-sm-6 text-black">
+    {%csrf_token %}
+
+  <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+    <form style="width: 50rem;" action="A/{{IdUsuario}}" method="post" enctype="multipart/form-data">
+        {%csrf_token %}
+      <h3 class="fa-crow mb-1 pb-3" style="letter-spacing: 1px;">Registrar Articulo</h3>
+
+      <div class="form-outline mb-0">
+        <input type="text" id="txtNombre" name="txtNombre" class="form-control" required/>
+        <label class="form-label" for="form2Example18">Nombre del Articulo:</label>
+      </div>
+
+      <div class="form-outline mb-0">
+        <input type="text" id="txtDescripcion" name="txtDescripcion" class="form-control" required/>
+        <label class="form-label" for="form2Example18">Descripcion del Articulo:</label>
+      </div>
+
+      <div class="form-outline mb-0">
+        <input type="text" id="txtEstadoProducto" name="txtEstadoProducto" class="form-control" required/>
+        <label class="form-label" for="form2Example18">Estado del Producto: </label>
+      </div>
+      <div class="form-outline mb-0">
+        <input type="text" id="txtCategoria" name="txtCategoria" class="form-control" required/>
+        <label class="form-label" for="form2Example18">Categoria: </label>
+      </div>
+      <div class="form-outline mb-0">
+        <input type="text" id="txtPaisOrigen" name="txtPaisOrigen" class="form-control" required/>
+        <label class="form-label" for="form2Example18">Pais de Origen: </label>
+      </div>
+      <div class="form-outline mb-0">
+        <input type="text" id="txtColor" name="txtColor" class="form-control" required/>
+        <label class="form-label" for="form2Example18">Color: </label>
+      </div>
+      <div class="form-outline mb-0">
+        <input type="text" id="txtImgArticulo" name="txtImgArticulo" class="form-control" required/>
+        <label class="form-label" for="form2Example18">Imagen del Articulo: </label>
+      </div>
+      {%csrf_token %}
+      <div class="pt-1 mb-0">
+        <button class="btn btn-outline-success btn-lg btn-block" type="submit">Actualizar </button>
+      </div>
+    </form>
+
+  </div> -->
+
+{% endblock %}

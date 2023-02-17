@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instant Sale: Bienvenido</title>
+    <link rel="stylesheet" href='{% static "css/Bienvenida.css" %}'>
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> 
+</head>
+<body>
+    <header class="header content">
+        <div class="header-video"> <!-- Capa de Video-->
+            <video src='{% static "video/VideoBienvenida.mp4" %}' autoplay loop muted></video>
+        </div>
+
+        <div class="header-overlay"></div>  <!-- Capa Transperente-->
+
+        <div class="header-content"> <!-- Capa Del contenido-->
+            <h1>Bienvenid@ a Instant Sale</h1>
+            <p>Recuerda ser responsable con las cantidades que estes subastando.</p>
+            <!-- <a class="btn" href="https://www.youtube.com/" target="_blank" >Ir a Youtube</a> Para enviar a otra pagina -->
+            <a class="btn" href="/login">Entrar al Sitio</a>
+        </div>
+    </header>
+</body>
+</html>
